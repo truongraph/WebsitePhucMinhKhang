@@ -11,7 +11,7 @@ services:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: sa
       WORDPRESS_DB_PASSWORD: kmk@.123
-      PHP_MEMORY_LIMIT: 512M
+      PHP_MEMORY_LIMIT: 1G
     depends_on:
       - db
       - phpmyadmin
