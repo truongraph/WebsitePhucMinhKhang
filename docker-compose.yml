@@ -4,21 +4,19 @@ services:
     container_name: wordpress
     volumes:
       - ./wp-content:/var/www/html/wp-content
-      - ./custom.ini:/usr/local/etc/php/conf.d/custom.ini
+      - ./custom.ini:/usr/local/etc/php/conf.d/custom.ini  # <=== thêm dòng này
     environment:
-      WORDPRESS_DB_NAME: kmk_phucminhkhang
-      WORDPRESS_TABLE_PREFIX: phucminhkhang_
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: sa
-      WORDPRESS_DB_PASSWORD: kmk@.123
-      PHP_MEMORY_LIMIT: 1G
+      - WORDPRESS_DB_NAME=kmk_phucminhkhang
+      - WORDPRESS_TABLE_PREFIX=phucminhkhang_
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=sa
+      - WORDPRESS_DB_PASSWORD=kmk@.123
     depends_on:
       - db
       - phpmyadmin
     restart: always
     ports:
       - 8081:80
-
   db:
     image: mariadb:latest
     container_name: db
