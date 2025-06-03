@@ -4,6 +4,7 @@ services:
     container_name: wordpress
     volumes:
       - ./wp-content:/var/www/html/wp-content
+      - ./custom.ini:/usr/local/etc/php/conf.d/custom.ini    # <-- thêm dòng này
     environment:
       - PHP_MEMORY_LIMIT=256M
       - WORDPRESS_DB_NAME=kmk_phucminhkhang
@@ -23,10 +24,8 @@ services:
     container_name: db
     volumes:
       - db_data:/var/lib/mysql
-      # This is optional!!!
       - ./kmk_phucminhkhang.sql:/docker-entrypoint-initdb.d/kmk_phucminhkhang.sql
       - ./custom.ini:/usr/local/etc/php/conf.d/custom.ini
-      # # #
     environment:
       - MYSQL_USER=sa
       - MYSQL_ROOT_PASSWORD=kmk@.123
@@ -40,7 +39,6 @@ services:
     image: phpmyadmin/phpmyadmin:latest
     container_name: phpmyadmin
     restart: always
-    
     ports:
      - 8181:80
     environment:
@@ -50,5 +48,6 @@ services:
     volumes:
       - ./custom.ini:/usr/local/etc/php/conf.d/custom.ini
       - ./php-sessions:/tmp
+
 volumes:
   db_data:
