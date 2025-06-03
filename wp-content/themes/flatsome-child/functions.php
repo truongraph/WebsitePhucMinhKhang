@@ -62,10 +62,3 @@ function manhduc_remove_social_tooltips() {
 }
 add_action('wp_footer', 'manhduc_remove_social_tooltips');
 
-
-function activate_popup_maker_plugin() {
-    if ( ! is_plugin_active( 'popup-maker/popup-maker.php' ) ) {
-        activate_plugin( 'popup-maker/popup-maker.php' );
-    }
-}
-add_action( 'admin_init', 'activate_popup_maker_plugin' );
