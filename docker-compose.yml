@@ -5,6 +5,7 @@ services:
     volumes:
       - ./wp-content:/var/www/html/wp-content
     environment:
+      - PHP_MEMORY_LIMIT=256M
       - WORDPRESS_DB_NAME=kmk_phucminhkhang
       - WORDPRESS_TABLE_PREFIX=phucminhkhang_
       - WORDPRESS_DB_HOST=db
